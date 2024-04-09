@@ -1,0 +1,37 @@
+-- Create Cars table
+CREATE TABLE Cars (
+    CarId INT PRIMARY KEY,
+    Make NVARCHAR(50) NOT NULL,
+    Model NVARCHAR(50) NOT NULL,
+    Year INT NOT NULL,
+    Type NVARCHAR(50) NOT NULL,
+    Mileage DECIMAL(10,2) NOT NULL,
+    Location NVARCHAR(100) NOT NULL,
+    Availability BIT NOT NULL,
+    -- Add other relevant car details columns
+);
+
+-- Create Bookings table
+CREATE TABLE Bookings (
+    BookingId INT PRIMARY KEY,
+    UserId NVARCHAR(450) FOREIGN KEY REFERENCES AspNetUsers(Id),
+    CarId INT FOREIGN KEY REFERENCES Cars(CarID),
+    PickupLocation NVARCHAR(100) NOT NULL,
+    DropoffLocation NVARCHAR(100) NOT NULL,
+    PickupDate DATE NOT NULL,
+    DropoffDate DATE NOT NULL,
+    PickupTime TIME NOT NULL,
+    DropoffTime TIME NOT NULL,
+    TotalPrice DECIMAL(10,2) NOT NULL,
+    BookingStatus NVARCHAR(20) NOT NULL,
+    -- Add other relevant booking details columns
+);
+
+-- Create Prices table
+CREATE TABLE Prices (
+    PriceId INT PRIMARY KEY,
+    CarType NVARCHAR(50) NOT NULL,
+    Location NVARCHAR(100) NOT NULL,
+    RentalPrice DECIMAL(10,2) NOT NULL,
+    -- Add other relevant price details columns
+);
