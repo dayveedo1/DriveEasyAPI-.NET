@@ -1,6 +1,8 @@
 using DriveEasy.API;
 using DriveEasy.API.DriveEasy.Config;
+using DriveEasy.API.DriveEasy.Interface;
 using DriveEasy.API.DriveEasy.Models;
+using DriveEasy.API.DriveEasy.Repo;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -109,6 +111,11 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddEntityFrameworkSqlServer();
+
+
+/* DI Mapper for Interfaces & their Implementations */
+builder.Services.AddTransient<IAuth, AuthImpl>();
+builder.Services.AddTransient<ICar, CarImpl>();
 
 
 /* Global Exception Handler Middleware | reference: GlobalExceptionHandler class */

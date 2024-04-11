@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace DriveEasy.API.DriveEasy.Models
+﻿namespace DriveEasy.API.DriveEasy.Dto
 {
-    public class User : IdentityUser
+    public class UserDto
     {
         public required string? FirstName { get; set; }
         public required string? LastName { get; set; }
@@ -15,6 +13,8 @@ namespace DriveEasy.API.DriveEasy.Models
         public required string? Country { get; set; }
         public string? DriverLicence { get; set; }
         public string? ProfilePicture { get; set; }
-         
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }
