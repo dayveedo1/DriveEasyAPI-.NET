@@ -31,7 +31,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                 return new ViewApiResponse
                 {
                     ResponseStatus = 400,
-                    ResponseMessage = $"Car already exist",
+                    ResponseMessage = $"Record already exist",
                     ResponseData = null
                 };
 
@@ -52,7 +52,7 @@ namespace DriveEasy.API.DriveEasy.Repo
             return new ViewApiResponse
             {
                 ResponseStatus = 200,
-                ResponseMessage = $"Car created successfully",
+                ResponseMessage = $"Record created successfully",
                 ResponseData = response.Entity
             };
 
@@ -74,7 +74,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                 return new ViewApiResponse
                 {
                     ResponseStatus = 404,
-                    ResponseMessage = $"Car Not Found",
+                    ResponseMessage = $"Record Not Found",
                     ResponseData = null
                 };
 
@@ -86,7 +86,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                     return new ViewApiResponse
                     {
                         ResponseStatus = 200,
-                        ResponseMessage = $"Car deleted successfully",
+                        ResponseMessage = $"Record deleted successfully",
                         ResponseData = null
                     };
 
@@ -94,7 +94,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                     return new ViewApiResponse
                     {
                         ResponseStatus = 400,
-                        ResponseMessage = $"Car is not available",
+                        ResponseMessage = $"Record is not available",
                         ResponseData = null
                     };
             }
@@ -116,7 +116,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                 return new ViewApiResponse
                 {
                     ResponseStatus = 404,
-                    ResponseMessage = $"Car Not Found",
+                    ResponseMessage = $"Record Not Found",
                     ResponseData = null
                 };
 
@@ -143,14 +143,14 @@ namespace DriveEasy.API.DriveEasy.Repo
                 return new ViewApiResponse
                 {
                     ResponseStatus = 200,
-                    ResponseMessage = $"SUccess",
+                    ResponseMessage = $"Success",
                     ResponseData = response
                 };
 
             return new ViewApiResponse
             {
                 ResponseStatus = 200,
-                ResponseMessage = $"SUccess",
+                ResponseMessage = $"Success",
                 ResponseData = response
             };
         }
@@ -165,8 +165,7 @@ namespace DriveEasy.API.DriveEasy.Repo
                     ResponseData = null
                 };
 
-            var car = await context.Cars.Where(x => x.Make.Equals(carUpdateDto.Make) && x.Year.Equals(carUpdateDto.Year) && x.Model.Equals(carUpdateDto.Model))
-                                        .FirstOrDefaultAsync();
+            var car = await context.Cars.FindAsync(carUpdateDto.CarId);
 
             if (car is null)
                 return new ViewApiResponse

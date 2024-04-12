@@ -30,7 +30,7 @@ namespace DriveEasy.API.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, new ViewApiResponse
                 {
                     ResponseStatus = 400,
-                    ResponseMessage = "Bad Request",
+                    ResponseMessage = $"Bad Request",
                     ResponseData = ModelState
                 });
 
@@ -52,7 +52,7 @@ namespace DriveEasy.API.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, new ViewApiResponse
                 {
                     ResponseStatus = 400,
-                    ResponseMessage = "Bad Request",
+                    ResponseMessage = $"Bad Request",
                     ResponseData = ModelState
                 });
 

@@ -18,7 +18,7 @@ namespace DriveEasy.API.Controllers
             this.price = price;
         }
 
-        [SwaggerOperation(Summary = "Endpoint to a price record")]
+        [SwaggerOperation(Summary = "Endpoint to add a price record")]
         [HttpPost("CreatePrice")]
         public async Task<ActionResult<ViewApiResponse>> CreatePrice(PriceDto priceDto)
         {
@@ -36,6 +36,50 @@ namespace DriveEasy.API.Controllers
 
             else if (response.ResponseStatus.Equals(400))
                 return StatusCode(StatusCodes.Status400BadRequest, response);
+
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [SwaggerOperation(Summary = "Endpoint to update a price record")]
+        [HttpPut("UpdatePrice")]
+        public async Task<ActionResult<ViewApiResponse>> UpdatePrice(UpdatePriceDto updatePriceDto)
+        {
+            if (!ModelState.IsValid)
+                return new ViewApiResponse
+                {
+                    ResponseStatus = 400,
+                    ResponseMessage = "Bad Request",
+                    ResponseData = ModelState
+                };
+
+            var response = await price.UpdatePrice(updatePriceDto);
+            if (response.ResponseStatus.Equals(500))
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+            else if (response.ResponseStatus.Equals(404))
+                return StatusCode(StatusCodes.Status404NotFound, response);
+
+            else if (response.ResponseStatus.Equals(400))
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [SwaggerOperation(Summary = "Endpoint to delete a price record")]
+        [HttpDelete("DeletePrice/{priceId}")]
+        public async Task<ActionResult<ViewApiResponse>> DeletePrice(int priceId)
+        {
+            var response = await price.DeletePrice(priceId);
+
+            if (response.ResponseStatus.Equals(500))
+                if (response.ResponseStatus.Equals(500))
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+                else if (response.ResponseStatus.Equals(404))
+                    return StatusCode(StatusCodes.Status404NotFound, response);
+
+                else if (response.ResponseStatus.Equals(400))
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
 
             return StatusCode(StatusCodes.Status200OK, response);
         }
