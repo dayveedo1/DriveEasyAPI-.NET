@@ -108,5 +108,37 @@ namespace DriveEasy.API.DriveEasy.Repo
                 ResponseData = null
             };
         }
+
+        public async Task<ViewApiResponse> GetPrices(){
+
+            var result = await context.Prices.ToListAsync();
+
+            if (result.Count == 0)
+                return new ViewApiResponse{
+                    ResponseStatus = 200,
+                    ResponseMessage = $"Success",
+                    ResponseData = {}
+                };
+
+            return new ViewApiResponse{
+                ResponseStatus = 200,
+                ResponseMessage = $"Success",
+                ResponseData = result
+            };
+        }
+
+/*
+        public async Task<ViewApiResponse> GetCarByPrice(decimal price){
+            if (price is null || price <= 0.00)
+                return new ViewApiResponse{
+                    ResponseStatus = 200,
+                    ResponseMessage = $"Bad Request",
+                    ResponseData = null
+                };
+            
+            var result = await context.Prices.Where(x => x.RentalPrice.Equals(price)).Select(x => x.)
+        }
+
+*/
     }
 }

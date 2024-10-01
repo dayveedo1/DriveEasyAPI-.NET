@@ -116,6 +116,7 @@ builder.Services.AddEntityFrameworkSqlServer();
 /* DI Mapper for Interfaces & their Implementations */
 builder.Services.AddTransient<IAuth, AuthImpl>();
 builder.Services.AddTransient<ICar, CarImpl>();
+builder.Services.AddTransient<IPrice, PriceImpl>();
 
 
 /* Global Exception Handler Middleware | reference: GlobalExceptionHandler class */

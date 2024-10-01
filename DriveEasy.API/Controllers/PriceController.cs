@@ -83,5 +83,19 @@ namespace DriveEasy.API.Controllers
 
             return StatusCode(StatusCodes.Status200OK, response);
         }
+
+        [SwaggerOperation(Summary = "Endpoint to return list of all prices")]
+        [HttpGet("GetPrices")]
+        public async Task<ActionResult<ViewApiResponse>> GetPrices(){
+            var response = await repo.GetPrices();
+
+            if (response.ResponseStatus.Equals(500))
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            
+            else if (response.ResponseStatus.Equals(400))
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
     }
 }

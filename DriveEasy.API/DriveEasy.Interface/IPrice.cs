@@ -7,5 +7,6 @@ namespace DriveEasy.API.DriveEasy.Interface
         Task<ViewApiResponse> CreatePrice(PriceDto priceDto);
         Task<ViewApiResponse> UpdatePrice(UpdatePriceDto updatePriceDto);
         Task<ViewApiResponse> DeletePrice(int priceId);
+        Task<ViewApiResponse> GetPrices();
     }
 }
