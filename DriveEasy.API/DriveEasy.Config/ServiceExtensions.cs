@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace DriveEasy.API.DriveEasy.Config
 {
-    public  static class ServiceExtensions
+    public static class ServiceExtensions
     {
 
         /* JWT Config */
