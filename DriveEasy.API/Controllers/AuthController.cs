@@ -22,7 +22,7 @@ namespace DriveEasy.API.Controllers
 
         #region Authentication
 
-        [SwaggerOperation(Summary = "Authentication Endpoint that accept Username & Password to generate a JWT Token(s)")]
+        [SwaggerOperation(Summary = "Authentication Endpoint that accept Username & Password to generate a JWT Token")]
         [HttpPost("Login")]
         public async Task<ActionResult<ViewApiResponse>> Login([FromBody] LoginDto loginDto)
         {
