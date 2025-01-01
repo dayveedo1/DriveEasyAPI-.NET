@@ -65,7 +65,7 @@ namespace DriveEasy.API.Controllers
             return StatusCode(StatusCodes.Status200OK, response);
         }
 
-        [SwaggerOperation(Summary = "Endpoint to delete a price record")]
+        [SwaggerOperation(Summary = "Endpoint to delete a price record(s)")]
         [HttpDelete("DeletePrice/{priceId}")]
         public async Task<ActionResult<ViewApiResponse>> DeletePrice(int priceId)
         {
