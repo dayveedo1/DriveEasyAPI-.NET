@@ -109,23 +109,23 @@ namespace DriveEasy.API.DriveEasy.Repo
             };
         }
 
-        public async Task<ViewApiResponse> GetPrices(){
+        //public async Task<ViewApiResponse> GetPrices(){
 
-            var result = await context.Prices.ToListAsync();
+        //    var result = await context.Prices.ToListAsync();
 
-            if (result.Count == 0)
-                return new ViewApiResponse{
-                    ResponseStatus = 200,
-                    ResponseMessage = $"Success",
-                    ResponseData = {}
-                };
+        //    if (result.Count == 0)
+        //        return new ViewApiResponse{
+        //            ResponseStatus = 200,
+        //            ResponseMessage = $"Success",
+        //            ResponseData = {}
+        //        };
 
-            return new ViewApiResponse{
-                ResponseStatus = 200,
-                ResponseMessage = $"Success",
-                ResponseData = result
-            };
-        }
+        //    return new ViewApiResponse{
+        //        ResponseStatus = 200,
+        //        ResponseMessage = $"Success",
+        //        ResponseData = result
+        //    };
+        //}
 
 /*
         public async Task<ViewApiResponse> GetCarByPrice(decimal price){
